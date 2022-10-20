@@ -32,8 +32,18 @@ RSpec.describe Like, type: :model do
     expect(like).to be_valid
   end
 
+  it 'is only valid with a user' do
+    like.users = nil
+    expect(like).to_not be_valid
+  end
+
   it 'is valid with a post' do
     like.posts = post
     expect(like).to be_valid
+  end
+
+  it 'is only valid with a post' do
+    like.posts = nil
+    expect(like).to_not be_valid
   end
 end
