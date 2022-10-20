@@ -29,7 +29,7 @@ test:
 
 production:
   <<: *default
-  database: myblog_Production
+  database: myblog_production
   host: localhost
   username: postgres
   password: <%= ENV['myblog_Password'] %>
