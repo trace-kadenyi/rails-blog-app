@@ -55,10 +55,9 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem "byebug", platforms: %i[mri mingw x64_mingw]
-  gem "capybara"
-  gem "factory_bot_rails"
-  gem "rspec"
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'rspec'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'rspec-rails'
 end

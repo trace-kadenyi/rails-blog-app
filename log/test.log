@@ -4052,3 +4052,146 @@ Processing by PostsController#show as HTML
   Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1708)
 Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms | Allocations: 2190)
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Julie"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am a renowned teached from Mexico. I enjoy my work very much."], ["posts_counter", 3], ["created_at", "2022-10-25 14:58:10.501344"], ["updated_at", "2022-10-25 14:58:10.501344"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "My first post"], ["text", "This is the first post of my blog"], ["comments_counter", 3], ["likes_counter", 5], ["created_at", "2022-10-25 14:58:10.519480"], ["updated_at", "2022-10-25 14:58:10.519480"], ["user_id", 92]]
+  [1m[36mUser Update All (0.5ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 92]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/92/posts" for 127.0.0.1 at 2022-10-25 17:58:10 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"92"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 314)
+  Rendered layout layouts/application.html.erb (Duration: 82.3ms | Allocations: 36685)
+Completed 200 OK in 92ms (Views: 84.1ms | ActiveRecord: 0.0ms | Allocations: 40186)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Julie"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am a renowned teached from Mexico. I enjoy my work very much."], ["posts_counter", 3], ["created_at", "2022-10-25 14:58:10.685897"], ["updated_at", "2022-10-25 14:58:10.685897"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "My first post"], ["text", "This is the first post of my blog"], ["comments_counter", 3], ["likes_counter", 5], ["created_at", "2022-10-25 14:58:10.688221"], ["updated_at", "2022-10-25 14:58:10.688221"], ["user_id", 93]]
+  [1m[36mUser Update All (1.1ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 93]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/93/posts" for 127.0.0.1 at 2022-10-25 17:58:10 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"93"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1713)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 2061)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Julie"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am a renowned teached from Mexico. I enjoy my work very much."], ["posts_counter", 3], ["created_at", "2022-10-25 14:58:10.706001"], ["updated_at", "2022-10-25 14:58:10.706001"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "My first post"], ["text", "This is the first post of my blog"], ["comments_counter", 3], ["likes_counter", 5], ["created_at", "2022-10-25 14:58:10.712445"], ["updated_at", "2022-10-25 14:58:10.712445"], ["user_id", 94]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 94]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/94/posts/31" for 127.0.0.1 at 2022-10-25 17:58:10 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"94", "id"=>"31"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 153)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 1839)
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 1.0ms | Allocations: 2763)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Julie"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am a renowned teached from Mexico. I enjoy my work very much."], ["posts_counter", 3], ["created_at", "2022-10-25 14:58:10.732864"], ["updated_at", "2022-10-25 14:58:10.732864"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "My first post"], ["text", "This is the first post of my blog"], ["comments_counter", 3], ["likes_counter", 5], ["created_at", "2022-10-25 14:58:10.735295"], ["updated_at", "2022-10-25 14:58:10.735295"], ["user_id", 95]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 95]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/95/posts/32" for 127.0.0.1 at 2022-10-25 17:58:10 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"95", "id"=>"32"}
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 22)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1708)
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 1.2ms | Allocations: 2190)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Agnes"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am an archaeologist from Australia. I just love digging."], ["posts_counter", 2], ["created_at", "2022-10-25 14:58:16.738284"], ["updated_at", "2022-10-25 14:58:16.738284"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2022-10-25 17:58:16 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 806)
+  Rendered layout layouts/application.html.erb (Duration: 104.7ms | Allocations: 36983)
+Completed 200 OK in 115ms (Views: 106.1ms | ActiveRecord: 0.4ms | Allocations: 40474)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Agnes"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am an archaeologist from Australia. I just love digging."], ["posts_counter", 2], ["created_at", "2022-10-25 14:58:16.898657"], ["updated_at", "2022-10-25 14:58:16.898657"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2022-10-25 17:58:16 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1868)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 2217)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Agnes"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am an archaeologist from Australia. I just love digging."], ["posts_counter", 2], ["created_at", "2022-10-25 14:58:16.911656"], ["updated_at", "2022-10-25 14:58:16.911656"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2022-10-25 17:58:16 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 170)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 1867)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.4ms | Allocations: 2215)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Agnes"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am an archaeologist from Australia. I just love digging."], ["posts_counter", 2], ["created_at", "2022-10-25 14:58:16.931512"], ["updated_at", "2022-10-25 14:58:16.931512"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/99" for 127.0.0.1 at 2022-10-25 17:58:16 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"99"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 99]]
+  Rendered users/show.html.erb within layouts/application (Duration: 17.2ms | Allocations: 5453)
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 7131)
+Completed 200 OK in 26ms (Views: 21.2ms | ActiveRecord: 2.7ms | Allocations: 7982)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Agnes"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "I am an archaeologist from Australia. I just love digging."], ["posts_counter", 2], ["created_at", "2022-10-25 14:58:16.967322"], ["updated_at", "2022-10-25 14:58:16.967322"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/100" for 127.0.0.1 at 2022-10-25 17:58:16 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 100]]
+  Rendered users/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 395)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 2061)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 1.4ms | Allocations: 2543)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
