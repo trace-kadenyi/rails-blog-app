@@ -13,7 +13,7 @@ RSpec.describe 'Users', type: :request do
 
   context 'GET #index' do
     before(:each) { get users_path }
-    it 'is a success' do
+    it 'is successful' do
       expect(response).to have_http_status(:ok)
     end
     it "renders 'index' template" do
@@ -26,7 +26,7 @@ RSpec.describe 'Users', type: :request do
 
   context 'GET #show' do
     before(:each) { get user_path(@user) }
-    it 'is a success' do
+    it 'is successful' do
       expect(response).to have_http_status(:ok)
     end
     it "renders 'show' template" do
