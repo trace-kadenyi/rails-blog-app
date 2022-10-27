@@ -8,6 +8,7 @@
       <p>Number of posts: <%= @user.posts.count %></p>
     </div>
   </div>
+  <h5><%= link_to 'Add new post', new_post_path %></h5>
   <div class='user_posts'>
     <% @user.posts.each do |post| %>
       <div class='posts_list'>
@@ -17,6 +18,7 @@
           Comments: <%= post.comments.count %>,
           Likes: <%= post.likes.count %>
         </span>
+        <h5><%= render partial: 'likes/form', locals: {post: post} %></h5>
       </div>
       <ul class='post_comment'>
         <% if post.return_recent_comments.length == 0 %>
@@ -24,10 +26,11 @@
         <% else %>
           <% post.return_recent_comments.each do |comment| %>
             <li>
-              <%= comment.users_name %>: <%= comment.text %>
+              <%= comment.users.name %>: <%= comment.text %>
             </li>
           <% end %>
         <% end %>
+        <h5><%= render partial: 'comments/form', locals: {post: post} %></h5>
       </ul>
     <% end %>
   </div>
