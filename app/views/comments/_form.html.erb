@@ -1,0 +1,8 @@
+<p>Comment here...</p>
+<%= form_with model: Comment do |form| %>
+  <%= form.hidden_field :post_id, value: post.id %>
+    <%= form.text_field :text %>
+    <%= form.submit "Submit Comment" %>
+<% end %>
+ 
+
