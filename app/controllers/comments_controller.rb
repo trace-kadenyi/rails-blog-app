@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     redirect_to user_posts_path(@user)
   end
 
-    def comment_params
-      params.require(:comment).permit(:text, :post_id)
-    end
+  def comment_params
+    params.require(:comment).permit(:text, :post_id)
+  end
 end
