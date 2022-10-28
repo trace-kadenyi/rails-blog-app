@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     else
       render :new
       flash[:alert] = 'Comment not submitted!'
-    end 
+    end
   end
 
   def comment_params
