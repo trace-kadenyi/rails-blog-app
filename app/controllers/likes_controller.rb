@@ -4,12 +4,16 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = Like.new(like_params)
+    @post = Post.find(params[:post_id])
     @user = current_user
-    @like.users = @user
+    @like = Like.new(user_id: @user.id, post_id: @post.id)
 
-    @like.save unless @like.invalid?
-    redirect_to user_posts_path(@user)
+    if @like.save
+      @post = Post.find(params[:post_id])
+      redirect_to user_post_path(user_id: @post.user_id, id: @post.id)
+    else
+      redirect_to user_post_path(user_id: @post.user_id, id: @post.id)
+    end
   end
 
   def like_params

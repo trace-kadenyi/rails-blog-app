@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
+    @user = User.includes(:posts).find(params[:user_id])
+    @posts = @user.posts 
   end
 
   def show
@@ -13,11 +14,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @user = current_user
-    @post.users = @user
+    @post.user_id = current_user.id
 
     if @post.save
-      redirect_to user_posts_path(@user)
+      redirect_to user_path(id: @post.user_id)
     else
       render :new, status: :unprocessable_entity
     end

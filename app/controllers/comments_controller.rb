@@ -5,11 +5,17 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @user = current_user
-    @comment.users = @user
+    @comment.user_id = current_user.id
+    @post = Post.find(params[:post_id])
+    @comment.post_id = @post.id
 
-    @comment.save unless @comment.invalid?
-    redirect_to user_posts_path(@user)
+    if @comment.save
+      redirect_to user_post_path(user_id: @post.user_id, id: @post.id)
+      flash[:notice] = 'Comment successfully added!'
+    else
+      render :new
+      flash[:alert] = 'Comment not submitted!'
+    end 
   end
 
   def comment_params
