@@ -6,7 +6,7 @@ RSpec.describe 'User show', type: :feature do
       name: 'Tracey',
       bio: 'I am a remote software developer',
       photo: 'http://www.example.com/photo.jpg',
-      posts_counter: 2
+      posts_counter: 0
     )
 
     @post = Post.create(
@@ -42,7 +42,7 @@ RSpec.describe 'User show', type: :feature do
     it 'displays number of posts' do
       visit user_path(@user1)
 
-      expect(page).to have_content('Number of Posts: 2')
+      expect(page).to have_content('Number of Posts: ' + @user1.posts_counter.to_s)
     end
 
     it 'displays the correct posts' do
