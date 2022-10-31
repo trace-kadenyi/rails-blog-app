@@ -42,7 +42,7 @@ RSpec.describe 'User show', type: :feature do
     it 'displays number of posts' do
       visit user_path(@user1)
 
-      expect(page).to have_content('Number of Posts: ' + @user1.posts_counter.to_s)
+      expect(page).to have_content("Number of Posts: #{@user1.posts_counter}")
     end
 
     it 'displays the correct posts' do
