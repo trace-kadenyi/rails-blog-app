@@ -5722,13 +5722,18 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 28ms (Views: 10.0ms | ActiveRecord: 2.2ms | Allocations: 9385)
 
 
+<<<<<<< HEAD
 Started GET "/" for ::1 at 2022-10-31 19:12:15 +0300
   [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+=======
+Started GET "/users/" for ::1 at 2022-10-31 14:26:11 +0100
+>>>>>>> d6c6d8bb7fab01c6ec5f0d7534f934df07de0c3f
 Processing by UsersController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering users/index.html.erb within layouts/application
   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   ↳ app/views/users/index.html.erb:3
+<<<<<<< HEAD
   Rendered users/index.html.erb within layouts/application (Duration: 24.8ms | Allocations: 5987)
   Rendered layout layouts/application.html.erb (Duration: 578.5ms | Allocations: 128423)
 Completed 200 OK in 598ms (Views: 576.8ms | ActiveRecord: 9.4ms | Allocations: 134572)
@@ -5928,5 +5933,47 @@ Processing by PostsController#show as HTML
   Rendered posts/show.html.erb within layouts/application (Duration: 35.4ms | Allocations: 3171)
   Rendered layout layouts/application.html.erb (Duration: 52.9ms | Allocations: 7245)
 Completed 200 OK in 65ms (Views: 50.8ms | ActiveRecord: 5.7ms | Allocations: 8023)
+=======
+  Rendered users/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1029)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 5220)
+Completed 200 OK in 22ms (Views: 17.8ms | ActiveRecord: 0.7ms | Allocations: 6118)
+
+
+Started GET "/users/2" for ::1 at 2022-10-31 14:26:35 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:16
+  Rendered users/show.html.erb within layouts/application (Duration: 9.2ms | Allocations: 1657)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 5397)
+Completed 200 OK in 24ms (Views: 17.4ms | ActiveRecord: 1.7ms | Allocations: 6279)
+
+
+Started GET "/users/1/posts/new" for ::1 at 2022-10-31 16:05:39 +0100
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1399)
+  Rendered layout layouts/application.html.erb (Duration: 24.1ms | Allocations: 5125)
+Completed 200 OK in 30ms (Views: 27.7ms | Allocations: 5810)
+
+
+Started GET "/users" for ::1 at 2022-10-31 16:05:43 +0100
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 3727)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 7480)
+Completed 200 OK in 53ms (Views: 50.6ms | ActiveRecord: 9.7ms | Allocations: 7821)
+>>>>>>> d6c6d8bb7fab01c6ec5f0d7534f934df07de0c3f
 
 
