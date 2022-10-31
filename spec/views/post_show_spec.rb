@@ -27,39 +27,39 @@ RSpec.describe 'Post show', type: :feature do
     Comment.create(post_id: @post.id, user_id: @user2.id, text: 'I enjoyed reading your post very much!')
     Like.create(post_id: @post.id, user_id: @user1.id)
     Like.create(post_id: @post.id, user_id: @user2.id)
+  end
+  describe 'GET /posts/:id' do
+    it 'displays the author name' do
+      visit user_post_path(@user1, @post)
+      expect(page).to have_content(@user1.name)
     end
-    describe 'GET /posts/:id' do
-      it 'displays the author name' do
-        visit user_post_path(@user1, @post)
-        expect(page).to have_content(@user1.name)
-      end
-      it 'displays the post title' do
-        visit user_post_path(@user1, @post)
-        expect(page).to have_content(@post.title)
-      end
-      it 'displays the post text' do
-        visit user_post_path(@user1, @post)
-        expect(page).to have_content(@post.text)
-      end
-      it 'displays number of comments' do
-        visit user_post_path(@user1, @post)
-        expect(page).to have_content('Comments: 4')
-      end
-      it 'displays number of likes' do
-        visit user_post_path(@user1, @post)
-        expect(page).to have_content('Likes: 2')
-      end
-      it 'displays the name of the author of each comment' do
-        visit user_post_path(@user1, @post)
-        expect(page).to have_content(@user1.name)
-        expect(page).to have_content(@user2.name)
-      end
-      it 'displays the text of each comment' do
-        visit user_post_path(@user1, @post)
-        expect(page).to have_content('I really like this post. Good job!')
-        expect(page).to have_content('I like motivational books!')
-        expect(page).to have_content('Nice post. Keep it up!')
-        expect(page).to have_content('I enjoyed reading your post very much!')
-      end
+    it 'displays the post title' do
+      visit user_post_path(@user1, @post)
+      expect(page).to have_content(@post.title)
+    end
+    it 'displays the post text' do
+      visit user_post_path(@user1, @post)
+      expect(page).to have_content(@post.text)
+    end
+    it 'displays number of comments' do
+      visit user_post_path(@user1, @post)
+      expect(page).to have_content('Comments: 4')
+    end
+    it 'displays number of likes' do
+      visit user_post_path(@user1, @post)
+      expect(page).to have_content('Likes: 2')
+    end
+    it 'displays the name of the author of each comment' do
+      visit user_post_path(@user1, @post)
+      expect(page).to have_content(@user1.name)
+      expect(page).to have_content(@user2.name)
+    end
+    it 'displays the text of each comment' do
+      visit user_post_path(@user1, @post)
+      expect(page).to have_content('I really like this post. Good job!')
+      expect(page).to have_content('I like motivational books!')
+      expect(page).to have_content('Nice post. Keep it up!')
+      expect(page).to have_content('I enjoyed reading your post very much!')
+    end
   end
 end
