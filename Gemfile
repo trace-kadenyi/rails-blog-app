@@ -7,6 +7,8 @@ ruby '3.0.1'
 
 gem 'pg'
 
+gem 'devise'
+
 gem 'rails-controller-testing'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
