@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.includes(posts: [:comments]).find(params[:user_id])
     @posts = @user.posts
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:comment, :likes).find(params[:id])
+    authorize! :read, @post
   end
 
   def new
@@ -14,13 +17,36 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @user = current_user
+    @post.user = @user
+    # @post.user_id = current_user.id
 
     if @post.save
-      redirect_to user_path(id: @post.user_id)
+      redirect_to user_path(@user)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to @post
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to root_path, status: :see_other
   end
 
   private
