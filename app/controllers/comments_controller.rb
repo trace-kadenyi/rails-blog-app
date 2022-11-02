@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
+      @comment.update_comments_counter
       flash[:success] = 'Comment created successfully'
       redirect_to user_posts_path
     else
