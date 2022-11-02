@@ -1,14 +1,12 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
-
   def index
     @user = User.includes(posts: [:comments]).find(params[:user_id])
     @posts = @user.posts
+    @current_user = current_user
   end
 
   def show
     @post = Post.includes(:comment, :likes).find(params[:id])
-    authorize! :read, @post
   end
 
   def new
