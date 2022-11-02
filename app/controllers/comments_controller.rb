@@ -4,32 +4,34 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    @user = current_user
-    @comment.user = @user
-    # @comment.user_id = current_user.id
-    # @post = Post.find(params[:post_id])
-    # @comment.post_id = @post.id
+    post = Post.find(params[:post_id])
 
-    if @comment.save
-      redirect_to user_post_path(user_id: @post.user_id, id: @post.id)
-      flash[:notice] = 'Comment successfully added!'
+    comment = Comment.new(comment_params)
+    comment.user = current_user
+    comment.post  = post
+
+    if comment.save
+      redirect_to user_post_path(post.user_id, post.id)
+      flash[:success] = 'Comment successfully added!'
     else
       render :new
-      flash[:alert] = 'Comment not submitted!'
+      flash[:error] = 'Comment not submitted!'
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-
-    redirect_to root_path, status: :see_other
+    if @comment.destroy
+      flash[:success] = 'Comment created successfully'
+      redirect_to user_posts_path
+    else
+      flash[:error] = 'Something went wrong'
+    end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:text, :post_id)
+    params.require(:new_comment).permit(:text)
   end
 end

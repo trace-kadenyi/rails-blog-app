@@ -25,7 +25,8 @@
         <% else %>
           <% post.return_recent_comments.each do |comment| %>
             <li>
-              <%= comment.user.name %>: <%= comment.text %>
+              <%= comment.user.name %>: <%= comment.text %>: 
+               <%= link_to 'delete', user_post_comment_path(post.user_id, post.id, comment.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
             </li>
           <% end %>
         <% end %>
