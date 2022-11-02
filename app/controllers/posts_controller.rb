@@ -5,8 +5,20 @@ class PostsController < ApplicationController
     @current_user = current_user
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      @post.update_posts_counter
+      flash[:success] = 'Post deleted successfully'
+    else
+      flash[:error] = 'Something went wrong'
+    end
+
+    redirect_to user_posts_path
+  end
+
   def show
-    @post = Post.includes(:comment, :likes).find(params[:id])
+    @post = Post.includes(:comments, :likes).find(params[:id])
   end
 
   def new
@@ -38,14 +50,6 @@ class PostsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    user = User.find(params[:user_id])
-    @post = Post.find(params[:id])
-    @post.destroy
-
-    redirect_to user_posts_path(user)
   end
 
   private
