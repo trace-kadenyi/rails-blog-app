@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
     comment = Comment.new(comment_params)
     comment.user = current_user
-    comment.post  = post
+    comment.post = post
 
     if comment.save
       redirect_to user_post_path(post.user_id, post.id)
