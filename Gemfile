@@ -7,7 +7,11 @@ ruby '3.0.1'
 
 gem 'pg'
 
+# Add devise for authentication
 gem 'devise'
+
+# Add cancan for authorization
+gem 'cancancan'
 
 gem 'rails-controller-testing'
 
